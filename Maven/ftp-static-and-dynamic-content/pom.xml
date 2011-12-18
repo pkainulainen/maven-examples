@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.kainulainen.maven</groupId>
+    <artifactId>ftp-static-and-dynamic-content</artifactId>
+    <packaging>war</packaging>
+    <version>0.1</version>
+    <name>Deploying Static and Dynamic Content With Maven Wagon Plugin</name>
+    <url>http://www.petrikainulainen.net</url>
+    <dependencies>
+    </dependencies>
+
+    <build>
+        <finalName>MavenFtpCopyStaticAndDynamicContent</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0-beta-3</version>
+                <executions>
+                    <execution>
+                        <id>upload-css</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>upload</goal>
+                        </goals>
+                        <configuration>
+                            <fromDir>${css.local.dir}</fromDir>
+                            <includes>*</includes>
+                            <url>${css.remote.url}</url>
+                            <toDir>${css.remote.dir}</toDir>
+                            <serverId>${css.remote.server.id}</serverId>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>upload-images</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>upload</goal>
+                        </goals>
+                        <configuration>
+                            <fromDir>${images.local.dir}</fromDir>
+                            <includes>*</includes>
+                            <url>${images.remote.url}</url>
+                            <toDir>${images.remote.dir}</toDir>
+                            <serverId>${images.remote.server.id}</serverId>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>upload-war</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>upload</goal>
+                        </goals>
+                        <configuration>
+                            <fromDir>${war.local.dir}</fromDir>
+                            <includes>*.war</includes>
+                            <url>${war.remote.url}</url>
+                            <toDir>${war.remote.dir}</toDir>
+                            <serverId>${war.remote.server.id}</serverId>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.0.2</version>
+                <!-- UNCOMMENT THE CONFIGURATION SECTION TO REMOVE STYLE AND IMAGE FILES FROM WAR -->
+                <!--
+                <configuration>
+                    <warSourceExcludes>
+                        styles/*, images/*
+                    </warSourceExcludes>
+                </configuration>
+                -->
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>7.1.4.v20100610</version>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <!-- Settings for CSS files -->
+        <css.local.dir>${basedir}/src/main/webapp/styles</css.local.dir>
+        <css.remote.dir></css.remote.dir>
+        <css.remote.server.id>css</css.remote.server.id>
+        <css.remote.url></css.remote.url>
+
+        <!-- Settings for image files -->
+        <images.local.dir>${basedir}/src/main/webapp/images</images.local.dir>
+        <images.remote.dir></images.remote.dir>
+        <images.remote.server.id>images</images.remote.server.id>
+        <images.remote.url></images.remote.url>
+
+        <!-- Settings for War files-->
+        <war.local.dir>${basedir}/target</war.local.dir>
+        <war.remote.dir></war.remote.dir>
+        <war.remote.server.id>war</war.remote.server.id>
+        <war.remote.url></war.remote.url>
+    </properties>
+</project>
