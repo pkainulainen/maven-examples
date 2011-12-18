@@ -7,7 +7,7 @@
     <version>0.1</version>
     <packaging>jar</packaging>
 
-    <name>MavenPropertiesFiltering</name>
+    <name>Maven Properties Filtering Example</name>
     <url>http://www.petrikainulainen.net</url>
     <licenses>
         <license>
