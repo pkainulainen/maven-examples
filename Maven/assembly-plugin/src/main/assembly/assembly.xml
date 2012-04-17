@@ -21,7 +21,7 @@
     <fileSets>
         <!--  Adds startup scripts to the root directory of zip package -->
         <fileSet>
-            <directory>etc</directory>
+            <directory>${project.build.scriptSourceDirectory}</directory>
             <outputDirectory></outputDirectory>
             <includes>
                 <include>startup.*</include>
