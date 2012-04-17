@@ -19,7 +19,11 @@
     </dependencySets>
 
     <fileSets>
-        <!--  Adds startup scripts to the root directory of zip package -->
+        <!--
+            Adds startup scripts to the root directory of zip package. The startup
+            scripts are located to src/main/scripts directory as stated by Maven
+            conventions.
+        -->
         <fileSet>
             <directory>${project.build.scriptSourceDirectory}</directory>
             <outputDirectory></outputDirectory>
