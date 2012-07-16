@@ -1,0 +1,10 @@
+This an example application of my blog entry:
+
+Integration Testing with Maven:
+
+http://www.petrikainulainen.net/programming/maven/integration-testing-with-maven/
+
+You can run
+
+- Unit tests by running a command mvn clean test on command line.
+- Integration tests by running a command mvn clean integration-test -P integration-test on command line.
