@@ -2,6 +2,7 @@ CONFIGURATION:
 
 - Open profiles/dev/config.properties
 - Set the value of solr.home.directory property
+- Update the Solr schema if necessary (this one haa a custom schema)
 
 RUN:
 

@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.petrikainulainen.spring</groupId>
-    <artifactId>data-solr-solr</artifactId>
+    <groupId>net.petrikainulainen.maven</groupId>
+    <artifactId>running-solr-with-maven</artifactId>
     <packaging>war</packaging>
     <version>0.1</version>
     <name>Todo Solr Example</name>
     <description>
-        This Maven project is used to run Solr in a development environment.
+        This Maven project demonstrates how we can run Solr in a development environment.
     </description>
     <licenses>
         <license>
