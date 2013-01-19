@@ -140,7 +140,6 @@
                                     <cleanEmptyDirectories>true</cleanEmptyDirectories>
                                     <directory>${solr.solr.home}/${solr.default.core.directory}</directory>
                                     <includes>
-                                        <include>solr.xml</include>
                                         <include>conf</include>
                                     </includes>
                                 </resource>
