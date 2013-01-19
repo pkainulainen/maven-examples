@@ -56,10 +56,12 @@
                 <version>1.0-alpha-2</version>
                 <configuration>
                     <files>
+                        <!-- Properties are read from profile specific property file -->
                         <file>${project.basedir}/profiles/${build.profile.id}/config.properties</file>
                     </files>
                 </configuration>
                 <executions>
+                    <!-- Load properties for the default lifecycle -->
                     <execution>
                         <id>default-lifecycle-properties</id>
                         <phase>initialize</phase>
@@ -67,6 +69,7 @@
                             <goal>read-project-properties</goal>
                         </goals>
                     </execution>
+                    <!-- Load properties for the clean lifecycle -->
                     <execution>
                         <id>clean-lifecycle-properties</id>
                         <phase>pre-clean</phase>
@@ -81,6 +84,7 @@
                 <artifactId>copy-maven-plugin</artifactId>
                 <version>0.2.5</version>
                 <executions>
+                    <!-- Copy Solr configuration file when compile phase is executed -->
                     <execution>
                         <id>copy-solr-config</id>
                         <phase>compile</phase>
@@ -89,6 +93,10 @@
                         </goals>
                         <configuration>
                             <resources>
+                                <!--
+                                    Copies solr.xml to correct directory and applies properties
+                                    filtering to it.
+                                -->
                                 <resource>
                                     <directory>${project.basedir}/src/main/resources</directory>
                                     <filtering>true</filtering>
@@ -97,6 +105,7 @@
                                         <include>solr.xml</include>
                                     </includes>
                                 </resource>
+                                <!-- Copies configuration files -->
                                 <resource>
                                     <directory>${project.basedir}/src/main/config</directory>
                                     <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf</targetPath>
@@ -104,6 +113,7 @@
                                         <exclude>lang</exclude>
                                     </excludes>
                                 </resource>
+                                <!-- Copies language specific configuration files -->
                                 <resource>
                                     <directory>${project.basedir}/src/main/config/lang</directory>
                                     <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/lang</targetPath>
@@ -111,6 +121,7 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <!-- Delete Solr configuration files clean clean phase is executed -->
                     <execution>
                         <id>clean-solr</id>
                         <phase>clean</phase>
@@ -120,6 +131,7 @@
                         <configuration>
                             <failIfNotFound>false</failIfNotFound>
                             <resources>
+                                <!-- Clean the overlays directory from the project root directory -->
                                 <resource>
                                     <clean>true</clean>
                                     <cleanEmptyDirectories>true</cleanEmptyDirectories>
@@ -128,6 +140,7 @@
                                         <include>**/**</include>
                                     </includes>
                                 </resource>
+                                <!-- Remove the solr.xml file -->
                                 <resource>
                                     <clean>true</clean>
                                     <directory>${solr.solr.home}</directory>
@@ -135,6 +148,7 @@
                                         <include>solr.xml</include>
                                     </includes>
                                 </resource>
+                                <!-- Remove the conf directory -->
                                 <resource>
                                     <clean>true</clean>
                                     <cleanEmptyDirectories>true</cleanEmptyDirectories>
@@ -156,11 +170,13 @@
                     <stopPort>9966</stopPort>
                     <stopKey>stop</stopKey>
                     <connectors>
+                        <!-- Listen to port 8983 -->
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>8983</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
+                    <!-- Read system properties from profile specific configuration file -->
                     <systemPropertiesFile>${project.basedir}/profiles/${build.profile.id}/config.properties</systemPropertiesFile>
                     <webApp>
                         <contextPath>/solr</contextPath>
