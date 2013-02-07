@@ -16,7 +16,7 @@
         </license>
     </licenses>
     <properties>
-        <solr.version>4.0.0</solr.version>
+        <solr.version>4.1.0</solr.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <profiles>
@@ -111,12 +111,24 @@
                                     <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf</targetPath>
                                     <excludes>
                                         <exclude>lang</exclude>
+                                        <exclude>velocity</exclude>
+                                        <exclude>xslt</exclude>
                                     </excludes>
                                 </resource>
                                 <!-- Copies language specific configuration files -->
                                 <resource>
                                     <directory>${project.basedir}/src/main/config/lang</directory>
                                     <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/lang</targetPath>
+                                </resource>
+                                <!-- Copy Velocity macros -->
+                                <resource>
+                                    <directory>${project.basedir}/src/main/config/velocity</directory>
+                                    <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/velocity</targetPath>
+                                </resource>
+                                <!-- Copy XSL style sheets -->
+                                <resource>
+                                    <directory>${project.basedir}/src/main/config/xslt</directory>
+                                    <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/xslt</targetPath>
                                 </resource>
                             </resources>
                         </configuration>
