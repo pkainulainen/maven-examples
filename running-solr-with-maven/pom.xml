@@ -120,7 +120,7 @@
                                     <directory>${project.basedir}/src/main/config/lang</directory>
                                     <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/lang</targetPath>
                                 </resource>
-                                <!-- Copy Velocity macros -->
+                                <!-- Copy Velocity macros and other files -->
                                 <resource>
                                     <directory>${project.basedir}/src/main/config/velocity</directory>
                                     <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/velocity</targetPath>
