@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schema name="todo" version="1.5">
     <fields>
-        <field name="id" type="long" indexed="true" stored="true" required="true"/>
+        <field name="id" type="string" indexed="true" stored="true" required="true"/>
         <field name="title" type="text_general" indexed="true" stored="true" required="true" multiValued="false"/>
         <field name="description" type="text_general" indexed="true" stored="false" multiValued="false"/>
 
