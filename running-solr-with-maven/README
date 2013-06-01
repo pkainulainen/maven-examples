@@ -1,3 +1,7 @@
+This is an example application of my blog post:
+
+Running Solr with Maven - http://www.petrikainulainen.net/programming/maven/running-solr-with-maven/
+
 CONFIGURATION:
 
 - Open profiles/dev/config.properties
