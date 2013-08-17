@@ -1,6 +1,7 @@
 This an example application of my blog entry:
 
-Code Coverage with Jacoco Maven plugin - Work in programs.
+Creating Code Coverage Reports for Unit And Integration Tests with The JaCoCo Maven Plugin:
+http://www.petrikainulainen.net/programming/maven/creating-code-coverage-reports-for-unit-and-integration-tests-with-the-jacoco-maven-plugin/
 
 You can create code coverage reports by running the following commands on command line:
 
