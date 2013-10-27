@@ -19,6 +19,9 @@
         <slf4j.version>1.7.5</slf4j.version>
         <solr.version>4.3.0</solr.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <solr.server.port>8983</solr.server.port>
+        <solr.server.stopport>9966</solr.server.stopport>
     </properties>
     <profiles>
         <profile>
@@ -207,12 +210,12 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>8.1.8.v20121106</version>
                 <configuration>
-                    <stopPort>9966</stopPort>
+                    <stopPort>${solr.server.stopport}</stopPort>
                     <stopKey>stop</stopKey>
                     <connectors>
-                        <!-- Listen to port 8983 -->
+                        <!-- Listen to port defined by Maven property solr.server.port -->
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8983</port>
+                            <port>${solr.server.port}</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
