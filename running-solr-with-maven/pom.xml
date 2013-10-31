@@ -136,30 +136,14 @@
                                         <include>solr.xml</include>
                                     </includes>
                                 </resource>
-                                <!-- Copies configuration files -->
+                                <!--
+                                     Copies configuration files (/), language specific configuration (/lang),
+                                     Velocity macros and other files (/velocity), XSL style sheets (/xslt)
+                                -->
                                 <resource>
                                     <directory>${project.basedir}/src/main/config</directory>
                                     <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf</targetPath>
-                                    <excludes>
-                                        <exclude>lang</exclude>
-                                        <exclude>velocity</exclude>
-                                        <exclude>xslt</exclude>
-                                    </excludes>
-                                </resource>
-                                <!-- Copies language specific configuration files -->
-                                <resource>
-                                    <directory>${project.basedir}/src/main/config/lang</directory>
-                                    <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/lang</targetPath>
-                                </resource>
-                                <!-- Copy Velocity macros and other files -->
-                                <resource>
-                                    <directory>${project.basedir}/src/main/config/velocity</directory>
-                                    <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/velocity</targetPath>
-                                </resource>
-                                <!-- Copy XSL style sheets -->
-                                <resource>
-                                    <directory>${project.basedir}/src/main/config/xslt</directory>
-                                    <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/xslt</targetPath>
+                                    <preservePath>true</preservePath>
                                 </resource>
                             </resources>
                         </configuration>
