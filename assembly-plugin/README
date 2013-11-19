@@ -7,4 +7,4 @@ http://www.petrikainulainen.net/programming/tips-and-tricks/creating-a-runnable-
 You can create the binary distribution by running one of the following command at command prompt:
 
 mvn package assemby:single 
-mvn assembly:assembly (runs package goal as well)
+mvn assembly:assembly (invokes the package phase)
