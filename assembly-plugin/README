@@ -4,6 +4,7 @@ Creating a Runnable Binary Distribution With Maven Assembly Plugin
 
 http://www.petrikainulainen.net/programming/tips-and-tricks/creating-a-runnable-binary-distribution-with-maven-assembly-plugin/
 
-You can create the binary distribution by running the following command at command prompt:
+You can create the binary distribution by running one of the following command at command prompt:
 
-mvn assembly:single
+mvn package assemby:single 
+mvn assembly:assembly (runs package goal as well)
