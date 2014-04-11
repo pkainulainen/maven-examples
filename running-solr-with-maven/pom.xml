@@ -19,6 +19,9 @@
         <slf4j.version>1.7.5</slf4j.version>
         <solr.version>4.3.0</solr.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <solr.server.port>8983</solr.server.port>
+        <solr.server.stopport>9966</solr.server.stopport>
     </properties>
     <profiles>
         <profile>
@@ -133,30 +136,14 @@
                                         <include>solr.xml</include>
                                     </includes>
                                 </resource>
-                                <!-- Copies configuration files -->
+                                <!--
+                                     Copies configuration files (/), language specific configuration (/lang),
+                                     Velocity macros and other files (/velocity), XSL style sheets (/xslt)
+                                -->
                                 <resource>
                                     <directory>${project.basedir}/src/main/config</directory>
                                     <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf</targetPath>
-                                    <excludes>
-                                        <exclude>lang</exclude>
-                                        <exclude>velocity</exclude>
-                                        <exclude>xslt</exclude>
-                                    </excludes>
-                                </resource>
-                                <!-- Copies language specific configuration files -->
-                                <resource>
-                                    <directory>${project.basedir}/src/main/config/lang</directory>
-                                    <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/lang</targetPath>
-                                </resource>
-                                <!-- Copy Velocity macros and other files -->
-                                <resource>
-                                    <directory>${project.basedir}/src/main/config/velocity</directory>
-                                    <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/velocity</targetPath>
-                                </resource>
-                                <!-- Copy XSL style sheets -->
-                                <resource>
-                                    <directory>${project.basedir}/src/main/config/xslt</directory>
-                                    <targetPath>${solr.solr.home}/${solr.default.core.directory}/conf/xslt</targetPath>
+                                    <preservePath>true</preservePath>
                                 </resource>
                             </resources>
                         </configuration>
@@ -207,12 +194,12 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>8.1.8.v20121106</version>
                 <configuration>
-                    <stopPort>9966</stopPort>
+                    <stopPort>${solr.server.stopport}</stopPort>
                     <stopKey>stop</stopKey>
                     <connectors>
-                        <!-- Listen to port 8983 -->
+                        <!-- Listen to port defined by Maven property solr.server.port -->
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8983</port>
+                            <port>${solr.server.port}</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
