@@ -181,6 +181,7 @@
                 <configuration>
                     <stopPort>9966</stopPort>
                     <stopKey>stop</stopKey>
+                    <!-- Listen to port 8983 -->
                     <httpConnector>
                         <port>8983</port>
                         <idleTimeout>60000</idleTimeout>
@@ -188,6 +189,7 @@
                     <!-- Read system properties from profile specific configuration file -->
                     <systemPropertiesFile>${project.basedir}/profiles/${build.profile.id}/config.properties
                     </systemPropertiesFile>
+                    <!-- Set the context path -->
                     <webApp>
                         <contextPath>/solr</contextPath>
                     </webApp>
