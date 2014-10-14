@@ -123,8 +123,12 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
+                            <!-- Configure the directory in which the file is copied. -->
                             <outputDirectory>${solr.solr.home}</outputDirectory>
                             <resources>
+                                <!--
+                                    Configure the copied file and apply properties filtering to it.
+                                -->
                                 <resource>
                                     <directory>${project.basedir}/src/main/resources</directory>
                                     <filtering>true</filtering>
@@ -135,18 +139,23 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <!--
+                         Copy everything found from the src/main/config directory to
+                         the correct directory.
+                    -->
                     <execution>
                         <id>copy-solr-config</id>
-                        <!--
-                            Copy everything found from the src/main/config directory to
-                            the correct directory.
-                        -->
                         <phase>compile</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
+                            <!-- Configure the target directory in which the files are copied. -->
                             <outputDirectory>${solr.solr.home}/${solr.default.core.directory}/conf</outputDirectory>
+                            <!--
+                                Configure the directory which contents are copied to the target directory.
+                                Disable properties filtering.
+                            -->
                             <resources>
                                 <resource>
                                     <directory>${project.basedir}/src/main/config</directory>
