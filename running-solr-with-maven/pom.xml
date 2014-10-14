@@ -196,8 +196,7 @@
                         <idleTimeout>60000</idleTimeout>
                     </httpConnector>
                     <!-- Read system properties from profile specific configuration file -->
-                    <systemPropertiesFile>${project.basedir}/profiles/${build.profile.id}/config.properties
-                    </systemPropertiesFile>
+                    <systemPropertiesFile>${project.basedir}/profiles/${build.profile.id}/config.properties</systemPropertiesFile>
                     <!-- Set the context path -->
                     <webApp>
                         <contextPath>/solr</contextPath>
