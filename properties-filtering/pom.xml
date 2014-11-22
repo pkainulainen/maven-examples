@@ -30,143 +30,71 @@
 
     <!-- Profiles configuration -->
     <profiles>
+        <!-- The configuration of the development profile -->
         <profile>
             <id>dev</id>
-            <!-- Dev profile is active by default -->
+            <!-- The development profile is active by default -->
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <!--
-                    Specifies the build profile id, which is used to find out the correct properties file.
-                    This is not actually necessary for this example, but it can be used for other purposes.
+                    Specifies the build.profile.id property that must be equal than the name of
+                    the directory that contains the profile specific configuration file.
+                    Because the name of the directory that contains the configuration file of the
+                    development profile is dev, we must set the value of the build.profile.id property to dev.
                 -->
                 <build.profile.id>dev</build.profile.id>
             </properties>
-            <build>
-                <filters>
-                    <!--
-                        Specifies path to the properties file, which contains profile specific
-                        configuration. In this case, the configuration file is searched
-                        from profiles/dev/ directory.
-                    -->
-                    <filter>profiles/${build.profile.id}/config.properties</filter>
-                </filters>
-                <resources>
-                    <!--
-                        Placeholders found from files located in the configured resource directories are replaced
-                        with values found from the profile specific configuration files.
-                    -->
-                    <resource>
-                        <filtering>true</filtering>
-                        <directory>src/main/resources</directory>
-                        <!--
-                            You can also include only specific files found from the configured directory or
-                            exclude files. This can be done by uncommenting following sections and adding
-                            the configuration under includes and excludes tags.
-                        -->
-                        <!--
-                        <includes>
-                            <include></include>
-                        </includes>
-                        <excludes>
-                            <exclude></exclude>
-                        </excludes>
-                        -->
-                    </resource>
-                </resources>
-            </build>
         </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <!--
-                    Specifies the build profile id, which is used to find out the correct properties file.
-                    This is not actually necessary for this example, but it can be used for other purposes.
-                -->
-                <build.profile.id>test</build.profile.id>
-            </properties>
-            <build>
-                <filters>
-                    <!--
-                        Specifies path to the properties file, which contains profile specific
-                        configuration. In this case, the configuration file is searched
-                        from profiles/test/ directory.
-                    -->
-                    <filter>profiles/${build.profile.id}/config.properties</filter>
-                </filters>
-                <resources>
-                    <!--
-                        Placeholders found from files located in the configured resource directories are replaced
-                        with values found from the profile specific configuration files.
-                    -->
-                    <resource>
-                        <filtering>true</filtering>
-                        <directory>src/main/resources</directory>
-                        <!--
-                            You can also include only specific files found from the configured directory or
-                            exclude files. This can be done by uncommenting following sections and adding
-                            the configuration under includes and excludes tags.
-                        -->
-                        <!--
-                        <includes>
-                            <include></include>
-                        </includes>
-                        <excludes>
-                            <exclude></exclude>
-                        </excludes>
-                        -->
-                    </resource>
-                </resources>
-            </build>
-        </profile>
+        <!-- The configuration of the production profile -->
         <profile>
             <id>prod</id>
             <properties>
                 <!--
-                    Specifies the build profile id, which is used to find out the correct properties file.
-                    This is not actually necessary for this example, but it can be used for other purposes.
+                    Specifies the build.profile.id property that must be equal than the name of
+                    the directory that contains the profile specific configuration file.
+                    Because the name of the directory that contains the configuration file of the
+                    production profile is prod, we must set the value of the build.profile.id property to prod.
                 -->
                 <build.profile.id>prod</build.profile.id>
             </properties>
-            <build>
-                <filters>
-                    <!--
-                        Specifies path to the properties file, which contains profile
-                        specific configuration. In this case, the configuration file is searched
-                        from profiles/prod/ directory.
-                    -->
-                    <filter>profiles/${build.profile.id}/config.properties</filter>
-                </filters>
-                <resources>
-                    <!--
-                        Placeholders found from files located in the configured resource directories are replaced
-                        with values found from the profile specific configuration files.
-                    -->
-                    <resource>
-                        <filtering>true</filtering>
-                        <directory>src/main/resources</directory>
-                        <!--
-                            You can also include only specific files found from the configured directory or
-                            exclude files. This can be done by uncommenting following sections and adding
-                            the configuration under includes and excludes tags.
-                        -->
-                        <!--
-                        <includes>
-                            <include></include>
-                        </includes>
-                        <excludes>
-                            <exclude></exclude>
-                        </excludes>
-                        -->
-                    </resource>
-                </resources>
-            </build>
+        </profile>
+        <!-- The configuration of the testing profile -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <!--
+                    Specifies the build.profile.id property that must be equal than the name of
+                    the directory that contains the profile specific configuration file.
+                    Because the name of the directory that contains the configuration file of the
+                    testing profile is test, we must set the value of the build.profile.id property to test.
+                -->
+                <build.profile.id>test</build.profile.id>
+            </properties>
         </profile>
     </profiles>
 
     <build>
         <finalName>maven-properties-filtering</finalName>
+        <filters>
+            <!--
+                Ensures that the config.properties file is always loaded from the
+		        configuration directory of the active Maven profile. 
+            -->
+            <filter>profiles/${build.profile.id}/config.properties</filter>
+        </filters>
+        <resources>
+            <!--
+                Placeholders that are found from the files located in the configured resource
+                directories are replaced with the property values found from the profile
+                specific configuration file.
+            -->
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <!-- The configuration of maven-assembly-plugin -->
             <plugin>
