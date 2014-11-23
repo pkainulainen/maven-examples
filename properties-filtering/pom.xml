@@ -96,39 +96,42 @@
             </resource>
         </resources>
         <plugins>
-            <!-- The configuration of maven-assembly-plugin -->
+            <!--
+                The configuration of the Maven Assembly plugin that assembles the
+                binary distribution of our example application.
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2.1</version>
-                <!-- The configuration of the plugin -->
+                <version>2.5.1</version>
                 <configuration>
-                    <!-- Specifies the configuration file of the assembly plugin -->
+                    <!-- Configures the used assembly descriptor -->
                     <descriptors>
                         <descriptor>src/main/assembly/assembly.xml</descriptor>
                     </descriptors>
                 </configuration>
             </plugin>
-            <!-- The configuration of maven-jar-plugin -->
+            <!--
+                The configuration of Maven Jar plugin that packages our application
+                into a jar file.
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.3.1</version>
-                <!-- The configuration of the plugin -->
+                <version>2.5</version>
                 <configuration>
-                    <!-- Configuration of the archiver -->
+                    <!-- Configures the created archive -->
                     <archive>
-                        <!-- Manifest specific configuration -->
+                        <!-- Configures the content of the created manifest -->
                         <manifest>
-                            <!-- Classpath is added to the manifest of the created jar file. -->
+                            <!-- Adds the classpath to the created manifest -->
                             <addClasspath>true</addClasspath>
                             <!--
-                                Configures the classpath prefix. This configuration option is
-                                used to specify that all needed libraries are found under lib/
-                                directory.
+                                Specifies that all dependencies of our application are found
+                                from the lib directory.
                             -->
                             <classpathPrefix>lib/</classpathPrefix>
-                            <!-- Specifies the main class of the application -->
+                            <!-- Configures the main class of the application -->
                             <mainClass>net.petrikainulainen.mavenpropertiesfiltering.HelloWorldApp</mainClass>
                         </manifest>
                     </archive>
