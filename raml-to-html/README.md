@@ -1,6 +1,6 @@
 This is the example application of my blog post:
 
-* [Generating HTML Documentation From RAML Documents With Maven]() - Not published yet
+* [Generating HTML Documentation From RAML Documents With Maven](http://www.petrikainulainen.net/programming/maven/generating-html-documentation-from-raml-documents-with-maven/) 
 
 Prerequisites
 =============
@@ -20,7 +20,7 @@ Other Tools
 * [NPM](https://www.npmjs.com/)
 * [raml2html](https://github.com/raml2html/raml2html)
 
-Don't know how to install these tools? [Read my blog post]().
+Don't know how to install these tools? [Read my blog post](http://www.petrikainulainen.net/programming/maven/generating-html-documentation-from-raml-documents-with-maven/).
 
 Creating the HTML API Documentation
 ===================================
