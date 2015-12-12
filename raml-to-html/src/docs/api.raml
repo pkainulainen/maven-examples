@@ -1,0 +1,25 @@
+#%RAML 0.8
+title: Example API
+version: v1
+baseUri: http://localhost:8080
+protocols: [HTTP]
+/api/todo:
+  get:
+    description: Finds the information of todo entries whose title or description contains the given searchTerm.
+    queryParameters:
+      searchTerm:
+        description: The used search term.
+        type: string
+        required: true
+        example: RAML
+    responses:
+      200:
+        description: Search was completed successfully.
+        body:
+          application/json:
+            example: |
+              {
+                "id": 1,
+                "title": "Write RAML blog post",
+                "description": "Write a blog post that describes how you can convert RAML documents into HTML."
+              }
