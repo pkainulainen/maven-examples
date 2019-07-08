@@ -10,17 +10,6 @@ import static org.junit.Assert.assertThat;
  */
 public class FizzBuzzTest {
 
-    private FizzBuzz fizzBuzz;
-
-    @Before
-    public void setUp() {
-        fizzBuzz = new FizzBuzz();
-    }
-
-    @Test
-    public void getFizzBuzzWord_NumberIsMultipleOfThree_ShouldReturnFizz() {
-        assertThat(fizzBuzz.getFizzBuzzWord(3), is("Fizz"));
-    }
 
 
 }
