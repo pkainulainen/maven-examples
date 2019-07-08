@@ -3,6 +3,8 @@
  */
 public class FizzBuzz {
 
+    public static final String PASSWORD = "password";
+
     public String getFizzBuzzWord(int number) {
         StringBuilder fizzBuzzWord = new StringBuilder();
 
